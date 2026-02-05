@@ -63,21 +63,30 @@ function createConfetti() {
 
 // Move the No button
 function moveNoButton() {
+  // Use the entire card as the boundary for more freedom
+  const cardRect = questionCard.getBoundingClientRect();
   const containerRect = buttonsContainer.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
 
-  // Calculate max positions within container
-  const maxX = containerRect.width - btnRect.width;
-  const maxY = containerRect.height - btnRect.height;
+  // Calculate the offset of buttons-container within the card
+  const containerOffsetX = containerRect.left - cardRect.left;
+  const containerOffsetY = containerRect.top - cardRect.top;
 
-  // Generate random position
-  const newX = Math.random() //* maxX;
-  const newY = Math.random() //* maxY;
+  // Calculate positions relative to the card
+  // The button can move anywhere within the card boundaries
+  const maxX = cardRect.width - btnRect.width;
+  const maxY = cardRect.height - btnRect.height;
+
+  // Generate random position within the entire card
+  const newX = Math.random() * maxX;
+  const newY = Math.random() * maxY;
 
   // Apply escaping class and position
+  // Position relative to buttons-container, but calculate to stay within card bounds
   noBtn.classList.add("escaping");
-  noBtn.style.left = `${newX}px`;
-  noBtn.style.top = `${newY}px`;
+  noBtn.style.position = "absolute";
+  noBtn.style.left = `${newX - containerOffsetX}px`;
+  noBtn.style.top = `${newY - containerOffsetY}px`;
 
   // Update message
   noClickCount = Math.min(noClickCount + 1, noMessages.length - 1);

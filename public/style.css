@@ -114,6 +114,7 @@ body {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
   text-align: center;
   position: relative;
+  overflow: visible;
 }
 
 /* Sparkles */
@@ -261,6 +262,7 @@ body {
 .btn-no.escaping {
   position: absolute;
   transition: all 0.2s ease-out;
+  z-index: 30;
 }
 
 /* Hint Text */
