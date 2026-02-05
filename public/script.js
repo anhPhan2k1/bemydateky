@@ -88,8 +88,8 @@ function moveNoButton() {
   noBtn.style.left = `${newX - containerOffsetX}px`;
   noBtn.style.top = `${newY - containerOffsetY}px`;
 
-  // Update message
-  noClickCount = Math.min(noClickCount + 1, noMessages.length - 1);
+  // Update message (cycle through messages continuously)
+  noClickCount = (noClickCount + 1) % noMessages.length;
   noBtn.textContent = noMessages[noClickCount];
 
   // Make Yes button bigger (increase font size and padding instead of transform,
