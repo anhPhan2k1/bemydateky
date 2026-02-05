@@ -71,8 +71,8 @@ function moveNoButton() {
   const maxY = containerRect.height - btnRect.height;
 
   // Generate random position
-  const newX = Math.random() * maxX;
-  const newY = Math.random() * maxY;
+  const newX = Math.random() //* maxX;
+  const newY = Math.random() //* maxY;
 
   // Apply escaping class and position
   noBtn.classList.add("escaping");
