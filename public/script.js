@@ -83,9 +83,16 @@ function moveNoButton() {
   noClickCount = Math.min(noClickCount + 1, noMessages.length - 1);
   noBtn.textContent = noMessages[noClickCount];
 
-  // Make Yes button bigger
+  // Make Yes button bigger (increase font size and padding instead of transform,
+  // so it doesn't conflict with existing CSS animations on the button)
   yesButtonScale = Math.min(yesButtonScale + 0.15, 2);
-  yesBtn.style.transform = `scale(${yesButtonScale})`;
+  const baseFontSizeRem = 1.25; // matches .btn-yes font-size in CSS
+  const basePaddingYRem = 1; // matches .btn-yes padding in CSS (vertical)
+  const basePaddingXRem = 3; // matches .btn-yes padding in CSS (horizontal)
+  yesBtn.style.fontSize = `${baseFontSizeRem * yesButtonScale}rem`;
+  yesBtn.style.padding = `${basePaddingYRem * yesButtonScale}rem ${
+    basePaddingXRem * yesButtonScale
+  }rem`;
 
   // Show hint after first escape
   // if (noClickCount > 0) {
