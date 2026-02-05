@@ -88,9 +88,9 @@ function moveNoButton() {
   yesBtn.style.transform = `scale(${yesButtonScale})`;
 
   // Show hint after first escape
-  if (noClickCount > 0) {
-    hintText.textContent = "Hint: The Yes button is getting bigger... 😉";
-  }
+  // if (noClickCount > 0) {
+  //   hintText.textContent = "Hint: The Yes button is getting bigger... 😉";
+  // }
 }
 
 // Handle Yes click
